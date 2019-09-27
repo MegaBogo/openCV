@@ -1,14 +1,28 @@
 import cv2
 import matplotlib.pyplot as plt
 
-img = cv2.imread('./images/2.jpg', cv2.IMREAD_GRAYSCALE)
+# , cv2.IMREAD_GRAYSCALE
+img = cv2.imread('./images/4.jpg')
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-ret, origin = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
-thr1 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
-thr2 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
+ret, origin = cv2.threshold(img_gray, 127, 255, 0)
+thr1 = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+thr2 = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
 
-# cv2.imshow('global threshold', origin)
-cv2.imshow('GAUSSIAN_C', thr1)
+# 필요없는 변수는 _로 지정 가능
+# _, contours, _ = cv2.findContours(origin, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+# image, contours, hierarchy = cv2.findContours(origin, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+
+# 윤곽선으로 상자 만들기
+contours, hierachy = cv2.findContours(thr2, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+
+cv2.drawContours(img, contours, -1, (0, 0, 255), 1)
+cv2.imshow('contour', img)
+
+# thr1 = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+# thr2 = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
+# cv2.imshow('global threshold', img_gray)
+# cv2.imshow('GAUSSIAN_C', thr1)
 # cv2.imshow('MEAN_C', thr2)
 
 cv2.waitKey(0)

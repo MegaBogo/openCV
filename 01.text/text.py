@@ -7,7 +7,7 @@ maxArea = 150
 minArea = 10 
 
 # Read image 
-I = cv2.imread('./images/1.jpg') 
+I = cv2.imread('./images/5.jpg')
 
 # Convert to gray 
 Igray = cv2.cvtColor(I,cv2.COLOR_RGB2GRAY) 
