@@ -3,3 +3,7 @@
 3. 가장 오른쪽 테두리 상자인지 확인한다.
 4. 다른 모든 상자의 (x, y, 너비, 높이) 정보를 사용하여 ROI를 만들고 숫자 만 자릅니다.
 
+
+예제 따라하기 목록
+1. 실제 이미지 데이터를 활용한 CNN 모델 구현하기
+URL :  http://www.birc.co.kr/2018/02/26/%EC%8B%A4%EC%A0%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-cnn-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0/
